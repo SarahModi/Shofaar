@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shofaar | Future-Ready Business Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0a192f;
+            --primary-blue: #1e3a8a;
+            --accent-blue: #3b82f6;
+            --accent-teal: #06b6d4;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #64748b;
+            --text-dark: #1e293b;
+            --text-light: #f1f5f9;
+            --gradient-primary: linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%);
+            --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            --gradient-subtle: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--gradient-primary);
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+            color: var(--accent-teal);
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-teal);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-teal);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-teal);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMtOS45NDEgMC0xOCA4LjA1OS0xOCAxOHM4LjA1OSAxOCAxOCAxOCAxOC04LjA1OSAxOC0xOC04LjA1OS0xOC0xOC0xOHptMCAzMGMtNi42MjcgMC0xMi01LjM3My0xMi0xMnM1LjM3My0xMiAxMi0xMiAxMiA1LjM3MyAxMiAxMi01LjM3MyAxMi0xMiAxMnoiIGZpbGw9IiNmZmYiLz48L2c+PC9zdmc+');
+            background-size: 60px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--gradient-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Pillars Section */
+        .pillars {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .section-title p {
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pillars-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pillar-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            box-shadow: var(--shadow-subtle);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .pillar-header {
+            padding: 30px 30px 20px;
+            background: var(--gradient-subtle);
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .pillar-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .pillar-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .pillar-card.gennext .pillar-title {
+            color: var(--accent-blue);
+        }
+
+        .pillar-card.gcc .pillar-title {
+            color: var(--primary-blue);
+        }
+
+        .pillar-content {
+            padding: 30px;
+        }
+
+        .pillar-features {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .pillar-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .pillar-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pillar-features li i {
+            margin-right: 10px;
+        }
+
+        .pillar-card.gennext .pillar-features li i {
+            color: var(--accent-blue);
+        }
+
+        .pillar-card.gcc .pillar-features li i {
+            color: var(--primary-blue);
+        }
+
+        /* About & Mission */
+        .about-mission {
+            padding: 100px 0;
+        }
+
+        .about-mission-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-mission-content {
+            flex: 1;
+        }
+
+        .about-mission-image {
+            flex: 1;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            background: var(--gradient-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-mission-image i {
+            font-size: 150px;
+            color: var(--accent-teal);
+            opacity: 0.7;
+        }
+
+        .mission-statement {
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--gradient-subtle);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-teal);
+        }
+
+        /* Services */
+        .services {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-subtle);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 100px 0;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-subtle);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--accent-teal);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--border-radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--accent-teal);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-teal);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-mission-container {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-dark);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow-medium);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .pillars-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pillar-card {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="logo-text">SHOFAAR</div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="#home" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#mission">Mission</a>
+                <a href="#services">Services</a>
+                <a href="#pillars">Pillars</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Future-Ready Business Solutions</h1>
+                <p>Shofaar is a forward-thinking enterprise with two distinct pillars: <strong>GenNext OnlineSchool</strong> — a fully AI-driven online learning platform, and <strong>GCC</strong> — providing strategic corporate solutions with precision and excellence.</p>
+                <a href="#pillars" class="cta-button">Explore Our Pillars</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pillars Section -->
+    <section class="pillars" id="pillars">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Business Pillars</h2>
+                <p>Two focused divisions driving innovation and excellence in their respective fields</p>
+            </div>
+            
+            <div class="pillars-container">
+                <!-- GenNext OnlineSchool -->
+                <div class="pillar-card gennext">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="pillar-title">GenNext OnlineSchool</h3>
+                        <p>Fully AI-driven online learning platform</p>
+                    </div>
+                    <div class="pillar-content">
+                        <p>A cutting-edge educational platform that leverages artificial intelligence to deliver personalized, adaptive learning experiences for students of all ages.</p>
+                        <ul class="pillar-features">
+                            <li><i class="fas fa-check-circle"></i> AI-powered adaptive learning paths</li>
+                            <li><i class="fas fa-check-circle"></i> Real-time progress tracking</li>
+                            <li><i class="fas fa-check-circle"></i> Interactive virtual classrooms</li>
+                            <li><i class="fas fa-check-circle"></i> Personalized feedback systems</li>
+                            <li><i class="fas fa-check-circle"></i> Global accessibility</li>
+                        </ul>
+                        <a href="#contact" class="cta-button" style="margin-top: 20px; width: 100%; text-align: center;">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- GCC -->
+                <div class="pillar-card gcc">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="pillar-title">GCC</h3>
+                        <p>Strategic Corporate Solutions</p>
+                    </div>
+                    <div class="pillar-content">
+                        <p>Providing elite corporate consulting with a focus on clean lines, strict professionalism, and bold strategic vision for modern enterprises.</p>
+                        <ul class="pillar-features">
+                            <li><i class="fas fa-check-circle"></i> Corporate strategy development</li>
+                            <li><i class="fas fa-check-circle"></i> Operational excellence consulting</li>
+                            <li><i class="fas fa-check-circle"></i> Digital transformation</li>
+                            <li><i class="fas fa-check-circle"></i> Market expansion strategies</li>
+                            <li><i class="fas fa-check-circle"></i> Performance optimization</li>
+                        </ul>
+                        <a href="#contact" class="cta-button" style="margin-top: 20px; width: 100%; text-align: center; background: var(--gradient-primary);">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Mission -->
+    <section class="about-mission" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Shofaar</h2>
+                <p>Building the future through innovation and strategic excellence</p>
+            </div>
+            
+            <div class="about-mission-container">
+                <div class="about-mission-content">
+                    <h3>Forward-Thinking Enterprise</h3>
+                    <p>Shofaar represents a new paradigm in business innovation, combining cutting-edge technology with strategic corporate expertise. Our dual-pillar approach allows us to address both the educational needs of tomorrow and the strategic challenges of today's business landscape.</p>
+                    
+                    <div class="mission-statement" id="mission">
+                        <h3>Our Mission</h3>
+                        <p>To revolutionize education through AI-driven personalization and elevate corporate performance through strategic precision. We believe in creating sustainable value through innovation, integrity, and excellence in execution.</p>
+                    </div>
+                </div>
+                
+                <div class="about-mission-image">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive solutions tailored to modern needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>AI-Powered Education</h3>
+                    <p>Personalized learning experiences powered by advanced artificial intelligence algorithms.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Adaptive Learning</h3>
+                    <p>Curriculum that adapts to individual student progress and learning styles in real-time.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Corporate Strategy</h3>
+                    <p>Data-driven strategic planning to optimize business performance and growth.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Operational Excellence</h3>
+                    <p>Streamlining processes and systems for maximum efficiency and productivity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch to learn more about our solutions</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Connect with Shofaar</h3>
+                    <p>Whether you're interested in our AI-driven educational platform or our corporate consulting services, our team is ready to assist you.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Corporate Headquarters, Dubai, UAE</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@shofaar.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+971 4 123 4567</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <select id="interest" required>
+                                <option value="" disabled selected>I'm interested in...</option>
+                                <option value="gennext">GenNext OnlineSchool</option>
+                                <option value="gcc">GCC Corporate Solutions</option>
+                                <option value="both">Both Pillars</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Full Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Email Address" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <div class="footer-logo">SHOFAAR</div>
+                    <p>Future-ready business solutions through innovation, strategy, and excellence.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#mission">Mission</a></li>
+                        <li><a href="#services">Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Pillars</h3>
+                    <ul class="footer-links">
+                        <li><a href="#pillars">GenNext OnlineSchool</a></li>
+                        <li><a href="#pillars">GCC Solutions</a></li>
+                        <li><a href="#contact">Partnerships</a></li>
+                        <li><a href="#contact">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-linkedin" style="margin-right: 8px;"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-twitter" style="margin-right: 8px;"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-instagram" style="margin-right: 8px;"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube" style="margin-right: 8px;"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Shofaar. All rights reserved. | Designed for GitHub Hosting</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const interest = document.getElementById('interest').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real implementation, you would send this data to a server
+            // For this demo, we'll just show an alert
+            alert(`Thank you ${name}! Your message about ${interest} has been received. We'll contact you at ${email} soon.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // Add active class to nav links based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
