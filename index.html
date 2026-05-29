@@ -1,925 +1,1337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shofaar | Future-Ready Business Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-dark: #0a192f;
-            --primary-blue: #1e3a8a;
-            --accent-blue: #3b82f6;
-            --accent-teal: #06b6d4;
-            --light-gray: #f8fafc;
-            --medium-gray: #e2e8f0;
-            --dark-gray: #64748b;
-            --text-dark: #1e293b;
-            --text-light: #f1f5f9;
-            --gradient-primary: linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%);
-            --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
-            --gradient-subtle: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.05);
-            --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.08);
-            --border-radius: 8px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: var(--gradient-primary);
-            color: white;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-medium);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            font-size: 28px;
-            color: var(--accent-teal);
-        }
-
-        .logo-text {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-teal);
-        }
-
-        .nav-links a.active {
-            color: var(--accent-teal);
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent-teal);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 180px 0 100px;
-            background: var(--gradient-primary);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.05;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMtOS45NDEgMC0xOCA4LjA1OS0xOCAxOHM4LjA1OSAxOCAxOCAxOCAxOC04LjA1OSAxOC0xOC04LjA1OS0xOC0xOC0xOHptMCAzMGMtNi42MjcgMC0xMi01LjM3My0xMi0xMnM1LjM3My0xMiAxMi0xMiAxMiA1LjM3MyAxMiAxMi01LjM3MyAxMi0xMiAxMnoiIGZpbGw9IiNmZmYiLz48L2c+PC9zdmc+');
-            background-size: 60px;
-        }
-
-        .hero-content {
-            max-width: 700px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: var(--text-light);
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 14px 32px;
-            background: var(--gradient-accent);
-            color: white;
-            text-decoration: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
-            cursor: pointer;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        /* Pillars Section */
-        .pillars {
-            padding: 100px 0;
-            background: var(--light-gray);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--primary-dark);
-        }
-
-        .section-title p {
-            color: var(--dark-gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .pillars-container {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .pillar-card {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
-            box-shadow: var(--shadow-subtle);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .pillar-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .pillar-header {
-            padding: 30px 30px 20px;
-            background: var(--gradient-subtle);
-            border-bottom: 1px solid var(--medium-gray);
-        }
-
-        .pillar-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .pillar-title {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .pillar-card.gennext .pillar-title {
-            color: var(--accent-blue);
-        }
-
-        .pillar-card.gcc .pillar-title {
-            color: var(--primary-blue);
-        }
-
-        .pillar-content {
-            padding: 30px;
-        }
-
-        .pillar-features {
-            list-style: none;
-            margin-top: 20px;
-        }
-
-        .pillar-features li {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--medium-gray);
-        }
-
-        .pillar-features li:last-child {
-            border-bottom: none;
-        }
-
-        .pillar-features li i {
-            margin-right: 10px;
-        }
-
-        .pillar-card.gennext .pillar-features li i {
-            color: var(--accent-blue);
-        }
-
-        .pillar-card.gcc .pillar-features li i {
-            color: var(--primary-blue);
-        }
-
-        /* About & Mission */
-        .about-mission {
-            padding: 100px 0;
-        }
-
-        .about-mission-container {
-            display: flex;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-mission-content {
-            flex: 1;
-        }
-
-        .about-mission-image {
-            flex: 1;
-            height: 400px;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-medium);
-            background: var(--gradient-subtle);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .about-mission-image i {
-            font-size: 150px;
-            color: var(--accent-teal);
-            opacity: 0.7;
-        }
-
-        .mission-statement {
-            margin-top: 40px;
-            padding: 30px;
-            background: var(--gradient-subtle);
-            border-radius: var(--border-radius);
-            border-left: 4px solid var(--accent-teal);
-        }
-
-        /* Services */
-        .services {
-            padding: 100px 0;
-            background: var(--light-gray);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow-subtle);
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .service-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        /* Contact */
-        .contact {
-            padding: 100px 0;
-        }
-
-        .contact-container {
-            display: flex;
-            gap: 50px;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-form {
-            flex: 1;
-        }
-
-        .contact-details {
-            margin-top: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .contact-item i {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-subtle);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: var(--accent-teal);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid var(--medium-gray);
-            border-radius: var(--border-radius);
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-dark);
-            color: var(--text-light);
-            padding: 60px 0 30px;
-        }
-
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .footer-logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: var(--accent-teal);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-teal);
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--dark-gray);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .about-mission-container {
-                flex-direction: column;
-            }
-            
-            .contact-container {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--primary-dark);
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: var(--shadow-medium);
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .pillars-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .pillar-card {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .cta-button {
-                padding: 12px 24px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shofaar — AI Solutions Company</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{
+  --void:#0D1117;
+  --abyss:#131820;
+  --navy:#1C2333;
+  --gunmetal:#393E41;
+  --steel:#6B7280;
+  --mist:#A8B4C0;
+  --ivory:#F6F7EB;
+  --ivory-dark:#E8E9DC;
+  --cyan:#3ABFBF;
+  --cyan-light:#7BD8D8;
+  --cyan-pale:#B8EAEA;
+  --cyan-dim:rgba(58,191,191,0.12);
+  --teal:#2C7873;
+  --terra:#E94F37;
+  --f-d:'Space Grotesk',system-ui,sans-serif;
+  --f-b:'Inter',system-ui,sans-serif;
+}
+body{font-family:var(--f-b);background:var(--void);color:var(--ivory);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 64px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(13,17,23,0.88);
+  backdrop-filter:blur(16px);
+  border-bottom:0.5px solid rgba(255,255,255,0.05);
+  transition:background 0.3s;
+}
+.nav-logo{display:flex;align-items:center;text-decoration:none;opacity:1;transition:opacity 0.2s;}
+.nav-logo:hover{opacity:0.8;}
+.nav-right{display:flex;align-items:center;gap:36px;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:400;color:var(--steel);text-decoration:none;letter-spacing:0.01em;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ivory);}
+.nav-cta{font-family:var(--f-b);font-size:12px;font-weight:500;background:var(--cyan);color:var(--void);border:none;padding:9px 20px;border-radius:3px;cursor:pointer;letter-spacing:0.02em;transition:background 0.2s,transform 0.1s;}
+.nav-cta:hover{background:var(--cyan-light);transform:translateY(-1px);}
+.nav-cta:active{transform:scale(0.97);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  padding:0;
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+}
+.hero-glow{
+  position:absolute;top:0;right:0;width:55%;height:100%;
+  background:radial-gradient(ellipse at 70% 45%,rgba(58,191,191,0.07) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-glow-2{
+  position:absolute;bottom:0;left:10%;width:40%;height:50%;
+  background:radial-gradient(ellipse at 30% 80%,rgba(58,191,191,0.04) 0%,transparent 65%);
+  pointer-events:none;
+}
+#hero-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+.hero-content{max-width:640px;padding:120px 64px 120px;position:relative;z-index:2;}
+
+.eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:28px;opacity:0;animation:fadeUp 0.7s ease 0.1s forwards;}
+.eyebrow-dot{width:5px;height:5px;border-radius:50%;background:var(--cyan);flex-shrink:0;}
+.eyebrow-text{font-family:var(--f-d);font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);}
+
+.hero-headline{
+  font-family:var(--f-d);
+  font-size:clamp(44px,5.5vw,72px);
+  font-weight:300;
+  line-height:1.0;
+  letter-spacing:-0.03em;
+  color:var(--ivory);
+  margin-bottom:24px;
+  opacity:0;animation:fadeUp 0.8s ease 0.25s forwards;
+}
+.hero-headline .accent{color:var(--cyan);}
+
+.hero-subheading{
+  font-family:var(--f-d);
+  font-size:clamp(18px,2.2vw,28px);
+  font-weight:300;
+  color:var(--cyan);
+  letter-spacing:-0.01em;
+  margin-bottom:20px;
+  opacity:0;animation:fadeUp 0.8s ease 0.35s forwards;
+}
+.hero-sub{
+  font-size:16px;font-weight:300;line-height:1.8;
+  color:var(--steel);max-width:480px;
+  margin-bottom:40px;
+  opacity:0;animation:fadeUp 0.8s ease 0.4s forwards;
+}
+
+.hero-ctas{display:flex;gap:12px;align-items:center;margin-bottom:56px;opacity:0;animation:fadeUp 0.8s ease 0.55s forwards;flex-wrap:wrap;}
+
+.btn-primary{
+  font-family:var(--f-b);font-size:13px;font-weight:500;
+  background:var(--cyan);color:var(--void);
+  border:none;padding:13px 28px;border-radius:3px;cursor:pointer;
+  letter-spacing:0.02em;transition:background 0.2s,transform 0.1s;
+  text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+}
+.btn-primary:hover{background:var(--cyan-light);transform:translateY(-1px);}
+.btn-primary:active{transform:scale(0.97);}
+
+.btn-outline{
+  font-family:var(--f-b);font-size:13px;font-weight:400;
+  background:transparent;color:var(--cyan-light);
+  border:0.5px solid rgba(58,191,191,0.4);
+  padding:12px 28px;border-radius:3px;cursor:pointer;
+  letter-spacing:0.02em;transition:all 0.2s;
+  text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-1px);}
+
+.trust-bar{
+  display:flex;align-items:stretch;
+  padding-top:36px;border-top:0.5px solid rgba(255,255,255,0.07);
+  opacity:0;animation:fadeUp 0.8s ease 0.7s forwards;
+  gap:0;
+}
+.trust-item{
+  flex:1;
+  padding-right:32px;margin-right:32px;
+  border-right:0.5px solid rgba(255,255,255,0.07);
+  display:flex;flex-direction:column;justify-content:flex-start;gap:6px;
+}
+.trust-item:last-child{border-right:none;padding-right:0;margin-right:0;}
+.trust-val{
+  font-family:var(--f-d);
+  font-size:clamp(20px,2.2vw,28px);
+  font-weight:300;color:var(--ivory);
+  letter-spacing:-0.02em;line-height:1;
+}
+.trust-val .c{color:var(--cyan);font-size:0.7em;}
+.trust-lbl{
+  font-size:10px;font-weight:500;
+  color:var(--steel);letter-spacing:0.1em;
+  text-transform:uppercase;line-height:1.4;
+}
+
+.scroll-hint{
+  position:absolute;bottom:32px;left:64px;
+  display:flex;align-items:center;gap:10px;
+  opacity:0;animation:fadeIn 1s ease 1.2s forwards;
+  z-index:2;
+}
+.scroll-line{width:28px;height:0.5px;background:rgba(255,255,255,0.15);position:relative;overflow:hidden;}
+.scroll-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--cyan);animation:scanLine 2s ease-in-out 1.5s infinite;}
+.scroll-text{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);}
+
+/* ── WHAT WE DO ── */
+.section-light{background:var(--ivory);padding:120px 64px;color:var(--void);}
+.section-dark{background:var(--abyss);padding:120px 64px;}
+.section-darker{background:var(--void);padding:120px 64px;}
+
+.sec-eyebrow{display:flex;align-items:center;gap:7px;margin-bottom:18px;}
+.sec-dot-dark{width:4px;height:4px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+.sec-dot-light{width:4px;height:4px;border-radius:50%;background:var(--cyan);flex-shrink:0;}
+.sec-label-dark{font-family:var(--f-d);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);}
+.sec-label-light{font-family:var(--f-d);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);}
+
+.sec-headline-dark{
+  font-family:var(--f-d);
+  font-size:clamp(28px,3.5vw,48px);
+  font-weight:300;line-height:1.1;
+  letter-spacing:-0.025em;
+  color:var(--void);
+  max-width:680px;margin-bottom:64px;
+}
+.sec-headline-light{
+  font-family:var(--f-d);
+  font-size:clamp(28px,3.5vw,48px);
+  font-weight:300;line-height:1.1;
+  letter-spacing:-0.025em;
+  color:var(--ivory);
+  max-width:680px;margin-bottom:56px;
+}
+.sec-headline-light .dim{color:var(--steel);}
+
+/* Pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5px;background:rgba(0,0,0,0.08);}
+.pillar{background:var(--ivory);padding:36px 32px;transition:background 0.2s;}
+.pillar:hover{background:var(--ivory-dark);}
+.pillar-num{font-family:var(--f-d);font-size:11px;font-weight:500;color:var(--teal);letter-spacing:0.1em;margin-bottom:18px;}
+.pillar-title{font-family:var(--f-d);font-size:20px;font-weight:400;color:var(--void);line-height:1.25;margin-bottom:12px;letter-spacing:-0.01em;}
+.pillar-body{font-size:13px;font-weight:300;color:#555;line-height:1.8;}
+
+/* Verticals */
+.vert-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;}
+.vert-header-note{font-size:12px;color:var(--steel);letter-spacing:0.02em;text-align:right;line-height:1.6;}
+.vert-grid{
+ display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0.5px;
+  background:rgba(255,255,255,0.04);
+}
+
+.vert-card{background:var(--navy);padding:44px 36px;transition:background 0.2s;position:relative;}
+.vert-card:hover{background:#1e2a40;}
+.vert-card.featured{background:#1a2840;}
+
+.badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--f-d);font-size:10px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:32px;letter-spacing:0.05em;text-transform:uppercase;}
+.badge-live{background:rgba(58,191,191,0.1);color:var(--cyan);border:0.5px solid rgba(58,191,191,0.25);}
+.badge-soon{background:rgba(255,255,255,0.04);color:var(--steel);border:0.5px solid rgba(255,255,255,0.08);}
+.badge-future{background:rgba(233,79,55,0.08);color:#FF8070;border:0.5px solid rgba(233,79,55,0.15);}
+.badge-dot{width:4px;height:4px;border-radius:50%;background:currentColor;}
+
+.vert-num{font-size:10px;font-weight:500;color:var(--gunmetal);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.vert-title{font-family:var(--f-d);font-size:clamp(22px,2.5vw,34px);font-weight:300;color:var(--ivory);line-height:1.1;margin-bottom:14px;letter-spacing:-0.02em;}
+.vert-body{font-size:13px;font-weight:300;color:var(--steel);line-height:1.8;margin-bottom:28px;}
+.vert-link{font-size:12px;font-weight:500;color:var(--cyan);text-decoration:none;display:inline-flex;align-items:center;gap:6px;letter-spacing:0.02em;transition:gap 0.2s;}
+.vert-link:hover{gap:10px;}
+.vert-link-dim{font-size:12px;color:var(--gunmetal);}
+
+.vert-body ul {
+    display: block;
+    font-weight: 300;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    color: var(--steel);  /* Match the paragraph color */
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.vert-body li {
+    display: block;
+    font-weight: 300;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    color: var(--steel);  /* Match the paragraph color */
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.vert-list-title {
+  display: block;
+  font-weight: 300;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  color: var(--steel);  /* Match the paragraph color */
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* About */
+.about-top{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:start;padding-bottom:72px;border-bottom:0.5px solid rgba(0,0,0,0.08);margin-bottom:64px;}
+.about-statement{font-family:var(--f-d);font-size:clamp(24px,3vw,40px);font-weight:300;line-height:1.2;letter-spacing:-0.02em;color:var(--void);margin-bottom:0;}
+.about-statement .hl{color:var(--teal);}
+.mission-label{font-family:var(--f-d);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;}
+.mission-text{font-size:16px;font-weight:300;color:#333;line-height:1.75;margin-bottom:24px;font-style:italic;}
+.vision-label{font-family:var(--f-d);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--steel);margin-bottom:8px;margin-top:24px;}
+.vision-text{font-size:14px;font-weight:300;color:#555;line-height:1.8;}
+
+/* Founders */
+.founders-lbl{font-family:var(--f-d);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--steel);margin-bottom:28px;}
+.founders-grid{
+  display:flex;
+  gap:1px;
+
+  overflow-x:auto;
+  overflow-y:hidden;
+
+  scroll-snap-type:x mandatory;
+
+  padding-bottom:8px;
+
+  scrollbar-width:none;
+
+  background:rgba(0,0,0,0.08);
+}
+
+/* Hide scrollbar Chrome */
+.founders-grid::-webkit-scrollbar{
+  display:none;
+}
+.founder-card{
+  background:var(--ivory);
+
+  padding:28px 24px;
+
+  transition:background 0.2s;
+
+  min-width:320px;
+  max-width:320px;
+
+  flex-shrink:0;
+
+  scroll-snap-align:start;
+}
+.founder-card:hover{background:var(--ivory-dark);}
+.founder-avatar{width:44px;height:44px;border-radius:50%;background:rgba(44,120,115,0.12);display:flex;align-items:center;justify-content:center;font-family:var(--f-d);font-size:16px;font-weight:400;color:var(--teal);margin-bottom:16px;}
+.founder-name{font-family:var(--f-d);font-size:17px;font-weight:400;color:var(--void);margin-bottom:3px;letter-spacing:-0.01em;}
+.founder-role{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:var(--teal);margin-bottom:12px;}
+.founder-bio{font-size:12px;font-weight:300;color:#555;line-height:1.75;}
+.founder-quote{font-size:12px;font-style:italic;color:#888;margin-top:12px;padding-top:12px;border-top:0.5px solid var(--ivory-dark);line-height:1.6;}
+
+/* CTA section */
+.cta-section{
+  background:var(--void);padding:120px 64px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.cta-glow{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(58,191,191,0.06) 0%,transparent 65%);
+  pointer-events:none;
+}
+.cta-headline{
+  font-family:var(--f-d);
+  font-size:clamp(32px,4vw,58px);
+  font-weight:300;color:var(--ivory);
+  letter-spacing:-0.025em;line-height:1.1;
+  max-width:600px;margin:0 auto 16px;
+}
+.cta-headline .accent{color:var(--cyan);}
+.cta-sub{font-size:15px;font-weight:300;color:var(--steel);max-width:400px;margin:0 auto 40px;line-height:1.75;}
+.cta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;position:relative;z-index:2;}
+
+.btn-terra{
+  font-family:var(--f-b);font-size:13px;font-weight:500;
+  background:var(--terra);color:var(--ivory);
+  border:none;padding:13px 28px;border-radius:3px;cursor:pointer;
+  letter-spacing:0.02em;transition:all 0.2s;
+  text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+}
+.btn-terra:hover{background:#C04030;transform:translateY(-1px);}
+
+/* Footer */
+footer{background:#0A0C10;padding:36px 64px;border-top:0.5px solid rgba(255,255,255,0.04);}
+.footer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:24px;border-bottom:0.5px solid rgba(255,255,255,0.04);}
+.footer-logo{font-family:var(--f-d);font-size:17px;font-weight:500;color:var(--ivory);letter-spacing:-0.01em;}
+.city-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.city{font-size:11px;color:var(--steel);letter-spacing:0.02em;}
+.city-dot{width:3px;height:3px;border-radius:50%;background:var(--cyan);flex-shrink:0;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:11px;color:var(--gunmetal);letter-spacing:0.02em;}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{font-size:11px;color:var(--gunmetal);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s;}
+.footer-links a:hover{color:var(--steel);}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal.d1{transition-delay:0.1s;}
+.reveal.d2{transition-delay:0.2s;}
+.reveal.d3{transition-delay:0.3s;}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes scanLine{0%{left:-100%;}100%{left:100%;}}
+
+/* ── EDU SCROLLYTELLING ── */
+.edu-scroll-section {
+  position: relative;
+  height: 400vh;
+  background: var(--void);
+}
+.edu-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title words */
+.edu-title-wrap {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
+  pointer-events: none;
+  z-index: 2;
+}
+.edu-word-left,
+.edu-word-right {
+  font-family: var(--f-d);
+  font-size: clamp(48px, 8vw, 112px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ivory);
+  display: inline-block;
+  transition: none;
+  will-change: transform, opacity;
+}
+.edu-word-right { color: var(--cyan); }
+
+/* Screenshot wrapper */
+.edu-screenshot-wrap {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72vw;
+  max-width: 980px;
+  z-index: 1;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.edu-screenshot-inner {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.7), 0 0 0 0.5px rgba(255,255,255,0.08);
+  background: #1e2d6e;
+}
+
+/* Browser chrome */
+.edu-screen-chrome {
+  background: #f0f0f0;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.edu-chrome-dots {
+  display: flex; gap: 5px; flex-shrink: 0;
+}
+.edu-chrome-dots span {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+.edu-chrome-dots span:nth-child(1) { background: #FF5F57; }
+.edu-chrome-dots span:nth-child(2) { background: #FFBD2E; }
+.edu-chrome-dots span:nth-child(3) { background: #28CA41; }
+.edu-chrome-bar { flex: 1; background: white; border-radius: 4px; padding: 3px 10px; }
+.edu-chrome-url { font-size: 11px; color: #666; font-family: var(--f-b); }
+
+/* Screen body */
+.edu-screen-body {
+  background: #111827;
+}
+
+.edu-real-image{
+  width:100%;
+  display:block;
+}
+/* Mock nav */
+.edu-mock-nav {
+  background: white;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.5px solid #eee;
+}
+.edu-mock-logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--f-b); font-size: 14px; font-weight: 700;
+  color: #1e2d6e;
+}
+.edu-mock-logo-icon {
+  width: 20px; height: 20px; background: #FFD700;
+  border-radius: 3px; flex-shrink: 0;
+}
+.edu-mock-links {
+  display: flex; gap: 24px;
+}
+.edu-mock-links span {
+  font-size: 12px; color: #333; font-family: var(--f-b); cursor: pointer;
+}
+
+/* Mock hero */
+.edu-mock-hero {
+  padding: 48px 48px 48px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 280px;
+  background: #1e2d6e;
+}
+.edu-mock-hero-left { flex: 1; max-width: 55%; }
+.edu-mock-headline {
+  font-family: var(--f-b); font-size: clamp(18px, 2.5vw, 32px);
+  font-weight: 800; color: white; line-height: 1.2; margin-bottom: 12px;
+}
+.edu-mock-sub {
+  font-size: clamp(10px, 1.2vw, 13px); color: rgba(255,255,255,0.75);
+  line-height: 1.6; margin-bottom: 20px; font-family: var(--f-b);
+}
+.edu-mock-btns { display: flex; gap: 10px; }
+.edu-btn-yellow {
+  font-size: clamp(9px, 1vw, 12px); font-weight: 700; font-family: var(--f-b);
+  background: #FFD700; color: #1e2d6e; border: none;
+  padding: 10px 18px; border-radius: 4px; cursor: pointer;
+}
+.edu-btn-outline {
+  font-size: clamp(9px, 1vw, 12px); font-weight: 500; font-family: var(--f-b);
+  background: transparent; color: white;
+  border: 1.5px solid white;
+  padding: 10px 18px; border-radius: 4px; cursor: pointer;
+}
+.edu-mock-hero-right {
+  flex-shrink: 0; margin-left: 24px;
+}
+.edu-mock-device {
+  width: clamp(80px, 14vw, 180px);
+  height: clamp(60px, 10vw, 130px);
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+}
+.edu-mock-device-screen {
+  width: 70%; height: 70%;
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+}
+.edu-device-code {
+  display: flex; gap: 4px;
+}
+.edu-code-sym {
+  font-size: clamp(14px, 2.5vw, 28px);
+  color: rgba(255,255,255,0.4);
+  font-family: monospace; font-weight: 700;
+}
+
+/* ── GCC SCROLLYTELLING ── */
+.gcc-scroll-section {
+  position: relative;
+  height: 320vh;
+  background: #070b14;
+}
+
+.gcc-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* TITLE */
+.gcc-title-wrap {
+  position: absolute;
+  z-index: 3;
+
+  display: flex;
+  gap: 0.18em;
+
+  pointer-events: none;
+}
+
+.gcc-word-left,
+.gcc-word-right {
+  font-family: var(--f-d);
+  font-size: clamp(52px, 8vw, 120px);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+
+  transition: none;
+  will-change: transform, opacity;
+}
+
+.gcc-word-left {
+  color: white;
+}
+
+.gcc-word-right {
+  color: var(--cyan);
+}
+
+/* SCREENSHOT */
+.gcc-shot-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 78vw;
+  max-width: 1300px;
+
+  opacity: 0;
+
+  transform: translate(-50%, -50%) scale(0.5);
+
+  will-change: transform, opacity;
+}
+
+.gcc-browser {
+  overflow: hidden;
+  border-radius: 18px;
+
+  background: #111827;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 40px 120px rgba(0,0,0,0.6);
+}
+
+/* TOP BAR */
+.gcc-browser-top {
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 18px;
+  gap: 14px;
+
+  background: #161d2c;
+
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.gcc-browser-dots {
+  display: flex;
+  gap: 7px;
+}
+
+.gcc-browser-dots span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.gcc-browser-dots span:nth-child(1){
+  background:#ff5f57;
+}
+
+.gcc-browser-dots span:nth-child(2){
+  background:#febc2e;
+}
+
+.gcc-browser-dots span:nth-child(3){
+  background:#28c840;
+}
+
+.gcc-browser-url {
+  background: #0f172a;
+
+  color: #7f8ba3;
+
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+}
+
+/* IMAGE */
+.gcc-image {
+  width: 100%;
+  display: block;
+}
+
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes scanLine{0%{left:-100%;}100%{left:100%;}}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-bullhorn"></i>
-                </div>
-                <div class="logo-text">SHOFAAR</div>
-            </div>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav class="nav-links" id="navLinks">
-                <a href="#home" class="active">Home</a>
-                <a href="#about">About</a>
-                <a href="#mission">Mission</a>
-                <a href="#services">Services</a>
-                <a href="#pillars">Pillars</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-bg"></div>
-        <div class="container">
-            <div class="hero-content">
-                <h1>Future-Ready Business Solutions</h1>
-                <p>Shofaar is a forward-thinking enterprise with two distinct pillars: <strong>GenNext OnlineSchool</strong> — a fully AI-driven online learning platform, and <strong>GCC</strong> — providing strategic corporate solutions with precision and excellence.</p>
-                <a href="#pillars" class="cta-button">Explore Our Pillars</a>
-            </div>
-        </div>
-    </section>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg height="30" viewBox="0 0 1599 404" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+      <mask id="mask0_104_42" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="1599" height="404">
+        <path d="M1598.67 0H0V404H1598.67V0Z" fill="white"/>
+      </mask>
+      <g mask="url(#mask0_104_42)">
+        <path d="M20.0172 290.022V273.834H97.163C104.064 273.834 110.002 272.24 114.976 269.042C119.96 265.834 123.715 261.662 126.246 256.522C128.772 251.371 130.038 246.016 130.038 240.459C130.038 234.891 128.814 229.662 126.371 224.772C123.923 219.886 120.298 215.928 115.496 212.897C110.689 209.855 104.913 208.334 98.163 208.334H62.7672C52.6422 208.334 43.913 206.272 36.5797 202.147C29.2463 198.011 23.6005 192.407 19.6422 185.334C15.6838 178.251 13.7047 170.324 13.7047 161.542C13.7047 152.782 15.6838 144.73 19.6422 137.397C23.6005 130.063 29.2463 124.167 36.5797 119.709C43.913 115.24 52.6422 113.001 62.7672 113.001H136.871V129.188H64.0172C57.4443 129.188 51.7568 130.709 46.9547 133.751C42.1474 136.782 38.4391 140.699 35.8297 145.501C33.2151 150.308 31.913 155.324 31.913 160.542C31.913 165.766 33.1318 170.74 35.5797 175.459C38.0224 180.183 41.5588 184.022 46.1838 186.98C50.8193 189.928 56.5172 191.397 63.2672 191.397H98.9339C109.543 191.397 118.517 193.511 125.851 197.73C133.194 201.938 138.767 207.626 142.559 214.792C146.351 221.959 148.246 229.844 148.246 238.438C148.246 248.053 146.257 256.772 142.288 264.605C138.33 272.438 132.684 278.636 125.351 283.188C118.017 287.746 109.21 290.022 98.9339 290.022H20.0172Z" fill="white"/>
+        <path d="M230.671 290.022V113.251H248.879V191.897H350.296V113.251H368.504V290.022H350.296V208.084H248.879V290.022H230.671Z" fill="white"/>
+        <path d="M542.728 293.313C528.905 293.313 516.342 290.949 505.04 286.23C493.749 281.511 484.092 274.933 476.082 266.501C468.082 258.074 461.926 248.292 457.624 237.167C453.332 226.042 451.186 214.157 451.186 201.501C451.186 188.865 453.332 176.98 457.624 165.855C461.926 154.73 468.082 144.954 476.082 136.521C484.092 128.094 493.749 121.516 505.04 116.792C516.342 112.074 528.905 109.709 542.728 109.709C556.728 109.709 569.332 112.074 580.54 116.792C591.749 121.516 601.353 128.094 609.353 136.521C617.363 144.954 623.52 154.73 627.811 165.855C632.113 176.98 634.27 188.865 634.27 201.501C634.27 214.157 632.113 226.042 627.811 237.167C623.52 248.292 617.363 258.074 609.353 266.501C601.353 274.933 591.749 281.511 580.54 286.23C569.332 290.949 556.728 293.313 542.728 293.313ZM542.728 276.876C553.353 276.876 563.129 275.021 572.061 271.313C580.988 267.605 588.738 262.334 595.311 255.501C601.895 248.667 606.999 240.662 610.624 231.48C614.249 222.287 616.061 212.292 616.061 201.501C616.061 190.542 614.249 180.516 610.624 171.417C606.999 162.308 601.895 154.344 595.311 147.521C588.738 140.688 580.988 135.376 572.061 131.584C563.129 127.792 553.353 125.896 542.728 125.896C532.27 125.896 522.572 127.792 513.645 131.584C504.712 135.376 496.915 140.688 490.249 147.521C483.592 154.344 478.457 162.35 474.832 171.542C471.207 180.725 469.395 190.709 469.395 201.501C469.395 212.292 471.207 222.287 474.832 231.48C478.457 240.662 483.592 248.667 490.249 255.501C496.915 262.334 504.712 267.605 513.645 271.313C522.572 275.021 532.27 276.876 542.728 276.876Z" fill="white"/>
+        <path d="M715.683 290.022V156.23C715.683 147.813 717.538 140.365 721.246 133.876C724.954 127.376 730.048 122.272 736.538 118.563C743.038 114.855 750.584 113.001 759.183 113.001H821.392V129.188H760.954C752.689 129.188 746.11 131.761 741.225 136.897C736.334 142.037 733.892 148.48 733.892 156.23V195.938H812.038V212.126H733.892V290.022H715.683Z" fill="white"/>
+        <path d="M866.394 290.021L928.103 128.417C930.629 121.85 933.874 117.094 937.832 114.146C941.801 111.188 946.483 109.709 951.874 109.709C957.441 109.709 962.249 111.146 966.29 114.021C970.342 116.886 973.551 121.6 975.915 128.167L1038.12 290.021H1018.14L1000.44 243.48H903.332L885.624 290.021H866.394ZM908.894 227.313H994.874L960.478 134.501C959.462 131.792 958.322 129.683 957.061 128.167C955.795 126.657 954.155 125.896 952.144 125.896C949.947 125.896 948.301 126.657 947.207 128.167C946.108 129.683 944.967 131.792 943.79 134.501L908.894 227.313Z" fill="white"/>
+        <path d="M1090.19 290.021L1151.9 128.417C1154.43 121.85 1157.67 117.094 1161.63 114.146C1165.6 111.188 1170.28 109.709 1175.67 109.709C1181.24 109.709 1186.05 111.146 1190.09 114.021C1194.14 116.886 1197.35 121.6 1199.71 128.167L1261.92 290.021H1241.94L1224.23 243.48H1127.13L1109.42 290.021H1090.19ZM1132.69 227.313H1218.67L1184.27 134.501C1183.26 131.792 1182.12 129.683 1180.86 128.167C1179.59 126.657 1177.95 125.896 1175.94 125.896C1173.74 125.896 1172.1 126.657 1171 128.167C1169.9 129.683 1168.76 131.792 1167.59 134.501L1132.69 227.313Z" fill="white"/>
+        <path d="M1329.42 290.022V113.001H1406.3C1417.09 113.001 1426.95 115.365 1435.88 120.084C1444.82 124.792 1451.95 131.365 1457.26 139.792C1462.57 148.225 1465.24 158.011 1465.24 169.147C1465.24 181.105 1462.11 191.558 1455.86 200.501C1449.62 209.433 1441.28 216.011 1430.84 220.23L1450.82 263.459C1452.5 267.001 1454.35 269.579 1456.36 271.188C1458.39 272.787 1461.17 273.584 1464.72 273.584H1475.34V290.022H1462.19C1455.79 290.022 1450.31 288.428 1445.76 285.23C1441.2 282.022 1437.41 277.469 1434.38 271.563L1412.63 224.522C1410.6 224.688 1408.53 224.855 1406.42 225.022C1404.32 225.188 1402.26 225.272 1400.24 225.272H1347.63V290.022H1329.42ZM1347.63 209.105H1403.28C1411.36 209.105 1418.68 207.542 1425.26 204.417C1431.84 201.292 1437.11 196.746 1441.07 190.772C1445.04 184.787 1447.03 177.579 1447.03 169.147C1447.03 160.886 1445.04 153.719 1441.07 147.647C1437.11 141.579 1431.88 136.99 1425.38 133.876C1418.89 130.751 1411.78 129.188 1404.03 129.188H1347.63V209.105Z" fill="white"/>
+        <path d="M1523.14 292.292C1519.6 292.292 1516.47 290.943 1513.76 288.25C1511.06 285.558 1509.72 282.438 1509.72 278.896C1509.72 275.188 1511.06 272.032 1513.76 269.417C1516.47 266.808 1519.6 265.5 1523.14 265.5C1526.85 265.5 1530 266.808 1532.62 269.417C1535.23 272.032 1536.53 275.188 1536.53 278.896C1536.53 281.261 1535.9 283.495 1534.64 285.605C1533.37 287.704 1531.73 289.344 1529.7 290.521C1527.67 291.698 1525.48 292.292 1523.14 292.292Z" fill="white"/>
+      </g>
+    </svg>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#verticals">Verticals</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-cta">Connect with us</button>
+  </div>
+</nav>
 
-    <!-- Pillars Section -->
-    <section class="pillars" id="pillars">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Business Pillars</h2>
-                <p>Two focused divisions driving innovation and excellence in their respective fields</p>
-            </div>
-            
-            <div class="pillars-container">
-                <!-- GenNext OnlineSchool -->
-                <div class="pillar-card gennext">
-                    <div class="pillar-header">
-                        <div class="pillar-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h3 class="pillar-title">GenNext OnlineSchool</h3>
-                        <p>Fully AI-driven online learning platform</p>
-                    </div>
-                    <div class="pillar-content">
-                        <p>A cutting-edge educational platform that leverages artificial intelligence to deliver personalized, adaptive learning experiences for students of all ages.</p>
-                        <ul class="pillar-features">
-                            <li><i class="fas fa-check-circle"></i> AI-powered adaptive learning paths</li>
-                            <li><i class="fas fa-check-circle"></i> Real-time progress tracking</li>
-                            <li><i class="fas fa-check-circle"></i> Interactive virtual classrooms</li>
-                            <li><i class="fas fa-check-circle"></i> Personalized feedback systems</li>
-                            <li><i class="fas fa-check-circle"></i> Global accessibility</li>
-                        </ul>
-                            <a href="https://gennxt.shofaar.com" 
-   target="_blank" 
-   class="pillar-button cta-button" 
-   style="margin-top: 20px; width: 100%; text-align: center; background: var(--gradient-primary);">
-   Visit Genext
-</a>
-                    </div>
-                </div>
-                
-                <!-- GCC -->
-                <div class="pillar-card gcc">
-                    <div class="pillar-header">
-                        <div class="pillar-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3 class="pillar-title">GCC</h3>
-                        <p>Strategic Corporate Solutions</p>
-                    </div>
-                    <div class="pillar-content">
-                        <p>Providing elite corporate consulting with a focus on clean lines, strict professionalism, and bold strategic vision for modern enterprises.</p>
-                        <ul class="pillar-features">
-                            <li><i class="fas fa-check-circle"></i> Corporate strategy development</li>
-                            <li><i class="fas fa-check-circle"></i> Operational excellence consulting</li>
-                            <li><i class="fas fa-check-circle"></i> Digital transformation</li>
-                            <li><i class="fas fa-check-circle"></i> Market expansion strategies</li>
-                            <li><i class="fas fa-check-circle"></i> Performance optimization</li>
-                        </ul>
-                        <a href="#contact" class="cta-button" style="margin-top: 20px; width: 100%; text-align: center; background: var(--gradient-primary);">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
 
-    <!-- About & Mission -->
-    <section class="about-mission" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Shofaar</h2>
-                <p>Building the future through innovation and strategic excellence</p>
-            </div>
-            
-            <div class="about-mission-container">
-                <div class="about-mission-content">
-                    <h3>Forward-Thinking Enterprise</h3>
-                    <p>Shofaar represents a new paradigm in business innovation, combining cutting-edge technology with strategic corporate expertise. Our dual-pillar approach allows us to address both the educational needs of tomorrow and the strategic challenges of today's business landscape.</p>
-                    
-                    <div class="mission-statement" id="mission">
-                        <h3>Our Mission</h3>
-                        <p>To revolutionize education through AI-driven personalization and elevate corporate performance through strategic precision. We believe in creating sustainable value through innovation, integrity, and excellence in execution.</p>
-                    </div>
-                </div>
-                
-                <div class="about-mission-image">
-                    <i class="fas fa-bullseye"></i>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="hero-content">
+    <h1 class="hero-headline">
+      Rebuilding<br>
+      industries<br>
+      <span class="accent">with AI.</span>
+    </h1>
 
-    <!-- Services -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Services</h2>
-                <p>Comprehensive solutions tailored to modern needs</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>AI-Powered Education</h3>
-                    <p>Personalized learning experiences powered by advanced artificial intelligence algorithms.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Adaptive Learning</h3>
-                    <p>Curriculum that adapts to individual student progress and learning styles in real-time.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h3>Corporate Strategy</h3>
-                    <p>Data-driven strategic planning to optimize business performance and growth.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Operational Excellence</h3>
-                    <p>Streamlining processes and systems for maximum efficiency and productivity.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <p class="hero-subheading">Gateway to a new civilization with AI.</p>
 
-    <!-- Contact -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>Get in touch to learn more about our solutions</p>
-            </div>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Connect with Shofaar</h3>
-                    <p>Whether you're interested in our AI-driven educational platform or our corporate consulting services, our team is ready to assist you.</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Corporate Headquarters, Dubai, UAE</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>info@shofaar.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+XXXXXXXXXX</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h3>Send a Message</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <select id="interest" required>
-                                <option value="" disabled selected>I'm interested in...</option>
-                                <option value="gennext">Genext OnlineSchool</option>
-                                <option value="gcc">GCC Corporate Solutions</option>
-                                <option value="both">Both Pillars</option>
-                                <option value="other">Other Inquiry</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Full Name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="email" id="email" placeholder="Email Address" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="cta-button">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+    <p class="hero-sub">
+      We identify outdated systems across industries and rebuild them using AI, automation, and design that people actually trust. Education is our first vertical.
+    </p>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-column">
-                    <div class="footer-logo">SHOFAAR</div>
-                    <p>Future-ready business solutions through innovation, strategy, and excellence.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#mission">Mission</a></li>
-                        <li><a href="#services">Services</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Our Pillars</h3>
-                    <ul class="footer-links">
-                        <li><a href="#pillars">GenNext OnlineSchool</a></li>
-                        <li><a href="#pillars">GCC Solutions</a></li>
-                        <li><a href="#contact">Partnerships</a></li>
-                        <li><a href="#contact">Careers</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Connect</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fab fa-linkedin" style="margin-right: 8px;"></i> LinkedIn</a></li>
-                        <li><a href="#"><i class="fab fa-twitter" style="margin-right: 8px;"></i> Twitter</a></li>
-                        <li><a href="#"><i class="fab fa-instagram" style="margin-right: 8px;"></i> Instagram</a></li>
-                        <li><a href="#"><i class="fab fa-youtube" style="margin-right: 8px;"></i> YouTube</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 Shofaar. All rights reserved. | Designed for GitHub Hosting</p>
-            </div>
-        </div>
-    </footer>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Connect with us <span>→</span></a>
+      <a href="#education" class="btn-outline">Explore Education <span>→</span></a>
+    </div>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const interest = document.getElementById('interest').value;
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // In a real implementation, you would send this data to a server
-            // For this demo, we'll just show an alert
-            alert(`Thank you ${name}! Your message about ${interest} has been received. We'll contact you at ${email} soon.`);
-            
-            // Reset form
-            contactForm.reset();
-        });
-        
-        // Add active class to nav links based on scroll position
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if(scrollY >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if(link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll</span>
+  </div>
+</section>
+
+
+
+<!-- WHAT WE DO -->
+<section class="section-light" id="about">
+  <div class="sec-eyebrow reveal">
+    <div class="sec-dot-dark"></div>
+    <span class="sec-label-dark">What Shofaar does</span>
+  </div>
+  <h2 class="sec-headline-dark reveal d1">
+    Every industry has a system<br>that hasn't been touched in years.<br>We find it. Then we fix it.
+  </h2>
+  <div class="pillars reveal d2">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">AI that solves real problems</div>
+      <p class="pillar-body">Not AI for the sake of a buzzword. We use it to do things that genuinely weren't possible before — faster decisions, smarter systems, better outcomes for the people using them.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">Products people actually use</div>
+      <p class="pillar-body">We build with the user in mind from day one. Clean, simple, fast. If it needs a manual, we've already failed. Design is not decoration — it's the product.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">Built to scale, not to impress</div>
+      <p class="pillar-body">We care more about what still works in three years than what looks good in a pitch deck today. Every system is designed with that standard in mind from the start.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VERTICALS -->
+<section class="section-dark" id="verticals">
+  <div class="vert-header">
+    <div>
+      <div class="sec-eyebrow reveal">
+        <div class="sec-dot-light"></div>
+        <span class="sec-label-light">Our verticals</span>
+      </div>
+      <h2 class="sec-headline-light reveal d1" style="margin-bottom:0;">
+        Solutions built to last.<br><span class="dim">Across every industry.</span>
+      </h2>
+    </div>
+    <div class="vert-header-note reveal">
+      We enter one industry,<br>do it right, then expand.
+    </div>
+  </div>
+
+  <div class="vert-grid reveal d2">
+    <div class="vert-card featured" id="education">
+      <div class="badge badge-live"><span class="badge-dot"></span>Live now</div>
+      <div class="vert-num">Vertical 01</div>
+      <div class="vert-title">GCC Dcode</div>
+      <p class="vert-body">We operate in IT Sevices, Business Process Outsourcing and Consulting
+      Corporate transformation for enterprises across the globe. Strategy, digital readiness, and operational as well as process transformation that sticks.
+      Developing an eco-system as a lever for continuous improvement (CI/KAIZEN) by constantly challenging the status quo from both perform and transform perspective.
+      <ul>
+        <div style="display: block; margin-bottom: 12px;">Modus Operandi</div>
+        <span class="vert-body ul"
+        <li>Engage, Define Problem Statement</li>
+        <li>Agree on Desired Outcome</li>
+        <li>Build a PoC & Scale</li>
+        </span>
+      </ul></p>
+
+      <a href="https://gccdcode.shofaar.com/" class="vert-link">Explore the platform <span>→</span></a>
+    </div>
+    <div class="vert-card">
+      <div class="badge badge-soon">Coming Soon</div>
+      <div class="vert-num">Vertical 02</div>
+      <div class="vert-title">AcademAI</div>
+      <p class="vert-body">An innovative and smarter approach to learning.
+          Making it to leave a lasting impression on the learners mindset. Learning to equip with knowledge and to edify the learners way of thinking.
+          Thereby, making a visible impact on both personality and way of working. including skills that actually matter.
+          <ul>
+          <div style="display: block; margin-bottom: 12px;">Modus Operandi</div>
+          <span class="vert-body ul"
+          <li>Corporate Learning Partner </li>
+          <li>Professional Learning (Industry Readiness)</li>
+          <li>Structured Schooling</li>
+          </span>
+          </ul>
+      </p>
+
+      <a href="https://gennxt.shofaar.com/" class="vert-link">Explore the platform <span>→</span></a>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- GCC DCODE SCROLLYTELLING -->
+<section id="gcc-scroll" class="gcc-scroll-section">
+
+  <div class="gcc-sticky">
+
+    <!-- TITLE -->
+    <div class="gcc-title-wrap">
+      <span class="gcc-word-left" id="gcc-left">
+        GCC
+      </span>
+
+      <span class="gcc-word-right" id="gcc-right">
+        Dcode
+      </span>
+    </div>
+
+    <!-- SCREENSHOT -->
+    <div class="gcc-shot-wrap" id="gcc-shot">
+
+      <div class="gcc-browser">
+
+        <div class="gcc-browser-top">
+
+          <div class="gcc-browser-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="gcc-browser-url">
+            gccdcode.shofaar.com
+          </div>
+
+        </div>
+
+        <img
+          src="gccdcode-shot.jpg"
+          alt="GCC Dcode Website"
+          class="gcc-image"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- SHOFAAR EDUCATION SCROLLYTELLING -->
+<section id="edu-scroll" class="edu-scroll-section">
+  <div class="edu-sticky">
+
+    <!-- Phase 1: centered title -->
+    <div class="edu-title-wrap" id="edu-title-wrap">
+      <span class="edu-word-left" id="edu-word-left">Academ</span>
+      <span class="edu-word-right" id="edu-word-right">AI</span>
+    </div>
+
+    <!-- Screenshot -->
+    <div class="edu-screenshot-wrap" id="edu-screenshot-wrap">
+      <div class="edu-screenshot-inner" id="edu-screenshot-inner">
+        <div class="edu-screen-chrome">
+          <div class="edu-chrome-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="edu-chrome-bar">
+            <div class="edu-chrome-url">shofaar.education</div>
+          </div>
+        </div>
+        <div class="edu-screen-body">
+
+            <img
+              src="edugate-shot.jpg"
+              alt="EDUG8 Website"
+              class="edu-real-image"
+            >
+
+  </div>
+</section>
+
+<!-- ABOUT & FOUNDERS -->
+<section class="section-light">
+  <div class="about-top">
+    <div>
+      <div class="sec-eyebrow reveal">
+        <div class="sec-dot-dark"></div>
+        <span class="sec-label-dark">About Shofaar</span>
+      </div>
+      <h2 class="about-statement reveal d1">
+        A company built to fix what others stopped <span class="hl">questioning.</span>
+      </h2>
+    </div>
+    <div class="reveal d2">
+      <p class="mission-label">Mission</p>
+      <p class="mission-text">"We are on one mission, to revolutionize, simplify, and transform, our civilization in the field of education and industry, with the help of disruptive technology in a safe and sustainable environment."</p>
+      <p class="vision-label">Vision</p>
+      <p class="vision-text">To build trust, integrity and value for our customers with integrated solutions products and services with the use of disruptive technologies and challenge the status quo.</p>
+    </div>
+  </div>
+
+  <p class="founders-lbl reveal">Meet the founders</p>
+  <div class="founders-grid reveal d1">
+    <div class="founder-card">
+      <div class="founder-avatar">S</div>
+      <div class="founder-name">Aarti Sharma</div>
+      <div class="founder-role">Leadership & Operations</div>
+      <p class="founder-bio">Drives the strategic direction and operational backbone of Shofaar. Focused on building systems that scale and a company that lasts beyond its first product.</p>
+      <p class="founder-quote">"We're not building a startup. We're building a company that's still relevant in 20 years."</p>
+    </div>
+    <div class="founder-card">
+      <div class="founder-avatar">R</div>
+      <div class="founder-name">Rachael Modi</div>
+      <div class="founder-role">Product, Strategy & Execution</div>
+      <p class="founder-bio">Turns vision into reality — from first principles to shipped product. Obsessive about clarity, quality, and making sure every decision serves the person using the product.</p>
+      <p class="founder-quote">"If we can't explain what we're building in one sentence, we don't understand it well enough yet."</p>
+    </div>
+    <div class="founder-card">
+      <div class="founder-avatar">S</div>
+      <div class="founder-name">Sarah Sunil</div>
+      <div class="founder-role">Systems Architecture & Cyber Intelligence</div>
+      <p class="founder-bio">The technical backbone of Shofaar. Designs and builds the systems under the hood — with a specialist eye on security and AI integration. Currently studying Cybersecurity.</p>
+      <p class="founder-quote">"A system is only as good as what it can withstand. We build for both."</p>
+    </div>
+    <div class="founder-card">
+      <div class="founder-avatar">R</div>
+      <div class="founder-name">Rajendra Prasad</div>
+      <div class="founder-role">Technology, Design & Content</div>
+      <p class="founder-bio">A small, focused group of builders — engineers, designers, and educators — working on the conviction that the best products come from people who care deeply about the problem.</p>
+      <p class="founder-quote">"Small team. High standards. No shortcuts."</p>
+    </div>
+    <div class="founder-card">
+      <div class="founder-avatar">S</div>
+      <div class="founder-name">Sushila Menon</div>
+      <div class="founder-role">Technology, Design & Content</div>
+      <p class="founder-bio">A small, focused group of builders — engineers, designers, and educators — working on the conviction that the best products come from people who care deeply about the problem.</p>
+      <p class="founder-quote">"Small team. High standards. No shortcuts."</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-glow"></div>
+  <h2 class="cta-headline reveal">
+    If you believe what<br>we believe —<br><span class="accent">let's talk.</span>
+  </h2>
+  <p class="cta-sub reveal d1">
+    We're looking for investors and partners who think long-term, move with purpose, and care about building things that actually work.
+  </p>
+  <div class="cta-btns reveal d2">
+    <a href="mailto:info@shofaar.com" class="btn-primary">Get in touch <span>→</span></a>
+    <a href="#education" class="btn-terra">Explore our products <span>→</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <span class="footer-logo">Shofaar</span>
+    <div class="city-row">
+      <span class="city">Dubai</span><span class="city-dot"></span>
+      <span class="city">Riyadh</span><span class="city-dot"></span>
+      <span class="city">London</span><span class="city-dot"></span>
+      <span class="city">Singapore</span><span class="city-dot"></span>
+      <span class="city">Mumbai</span>
+    </div>
+    <span style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-style:italic;color:var(--gunmetal);">A friend called future.</span>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Shofaar. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Legal</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(e=>{
+  e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── Canvas ──
+const canvas=document.getElementById('hero-canvas');
+const ctx=canvas.getContext('2d');
+let W,H,time=0,mouse={x:-999,y:-999},prevMouse={x:-999,y:-999};
+let dots=[],particles=[];
+let orbs=[
+  {px:0.62,py:0.42,vx:0,vy:0,x:0,y:0,phase:0,speed:0.00032,amp:0.15},
+  {px:0.12,py:0.72,vx:0,vy:0,x:0,y:0,phase:1.4,speed:0.00019,amp:0.09},
+  {px:0.85,py:0.25,vx:0,vy:0,x:0,y:0,phase:2.1,speed:0.00026,amp:0.08},
+];
+
+function resize(){
+  W=canvas.width=canvas.offsetWidth;
+  H=canvas.height=canvas.offsetHeight;
+  initDots();
+  orbs.forEach(o=>{o.x=o.px*W;o.y=o.py*H;});
+}
+
+function initDots(){
+  dots=[];
+  const sp=44;
+  const cols=Math.ceil(W/sp)+2,rows=Math.ceil(H/sp)+2;
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++)
+    dots.push({
+      bx:c*sp,by:r*sp,
+      x:c*sp,y:r*sp,
+      ox:0,oy:0,
+      brightness:Math.random(),
+      phase:Math.random()*Math.PI*2,
+      speed:Math.random()*0.014+0.006
+    });
+}
+
+function initParticles(){
+  particles=[];
+  for(let i=0;i<44;i++)particles.push({
+    x:Math.random()*window.innerWidth,
+    y:Math.random()*window.innerHeight,
+    vx:(Math.random()-0.5)*0.4,
+    vy:(Math.random()-0.5)*0.4,
+    size:Math.random()*2+0.5,
+    alpha:Math.random()*0.4+0.1,
+    cyan:Math.random()>0.55,
+    pulse:Math.random()*Math.PI*2
+  });
+}
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  time++;
+
+  // Mouse velocity for blob reactivity
+  const mvx=mouse.x-prevMouse.x;
+  const mvy=mouse.y-prevMouse.y;
+  const mspeed=Math.sqrt(mvx*mvx+mvy*mvy);
+  prevMouse.x=mouse.x;prevMouse.y=mouse.y;
+
+  // Update orb positions — mouse pushes orbs away
+  orbs.forEach((o,i)=>{
+    o.phase+=o.speed;
+    // Natural drift
+    const nx=o.px*W+Math.sin(o.phase)*W*o.amp;
+    const ny=o.py*H+Math.cos(o.phase+i)*H*o.amp;
+
+    // Mouse repulsion on orbs — more aggressive
+    const dx=nx-mouse.x,dy=ny-mouse.y;
+    const dist=Math.sqrt(dx*dx+dy*dy)||1;
+    const repulse=Math.max(0,1-dist/320)*mspeed*0.6;
+    o.vx+=(dx/dist)*repulse;
+    o.vy+=(dy/dist)*repulse;
+    o.vx*=0.92;o.vy*=0.92;
+
+    o.x+=(nx-o.x)*0.04+o.vx;
+    o.y+=(ny-o.y)*0.04+o.vy;
+  });
+
+  // Draw orbs
+  const orbSizes=[460,280,200];
+  const orbAlphas=[[0.11,0.05],[0.08,0.03],[0.06,0.02]];
+  const orbColors=['58,191,191','44,120,115','58,191,191'];
+  orbs.forEach((o,i)=>{
+    const g=ctx.createRadialGradient(o.x,o.y,0,o.x,o.y,orbSizes[i]);
+    g.addColorStop(0,`rgba(${orbColors[i]},${orbAlphas[i][0]})`);
+    g.addColorStop(0.4,`rgba(${orbColors[i]},${orbAlphas[i][1]})`);
+    g.addColorStop(1,'transparent');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  });
+
+  // Mouse proximity glow — large reactive blob that follows cursor
+  if(mouse.x>0&&mouse.x<W){
+    const mg=ctx.createRadialGradient(mouse.x,mouse.y,0,mouse.x,mouse.y,180+mspeed*4);
+    mg.addColorStop(0,`rgba(58,191,191,${0.06+mspeed*0.004})`);
+    mg.addColorStop(0.5,`rgba(58,191,191,${0.02+mspeed*0.001})`);
+    mg.addColorStop(1,'transparent');
+    ctx.fillStyle=mg;ctx.fillRect(0,0,W,H);
+  }
+
+  // Dots
+  for(let d of dots){
+    d.phase+=d.speed;
+    const wave=Math.sin(d.phase)*0.5+0.5;
+
+    // Mouse repulsion — stronger and wider
+    const mx=d.bx-mouse.x,my=d.by-mouse.y;
+    const mdist=Math.sqrt(mx*mx+my*my)||1;
+    const mrepulse=Math.max(0,1-mdist/180);
+    const targetOx=(mx/mdist)*mrepulse*18;
+    const targetOy=(my/mdist)*mrepulse*18;
+    d.ox+=(targetOx-d.ox)*0.12;
+    d.oy+=(targetOy-d.oy)*0.12;
+    d.x=d.bx+d.ox;
+    d.y=d.by+d.oy;
+
+    // Orb influence
+    let maxOi=0;
+    orbs.forEach(o=>{
+      const odx=d.x-o.x,ody=d.y-o.y;
+      const od=Math.sqrt(odx*odx+ody*ody);
+      const oi=Math.max(0,1-od/320);
+      if(oi>maxOi) maxOi=oi;
+    });
+
+    const alpha=(0.07+wave*0.12+maxOi*0.3+mrepulse*0.25)*(d.brightness*0.5+0.5);
+    const sz=mrepulse>0.3?1.8:maxOi>0.4?1.5:1;
+    ctx.fillStyle=maxOi>0.15||mrepulse>0.1?`rgba(58,191,191,${alpha})`:`rgba(168,180,192,${alpha*0.55})`;
+    ctx.beginPath();ctx.arc(d.x,d.y,sz,0,Math.PI*2);ctx.fill();
+  }
+
+  // Connection lines near orbs
+  const mainOrb=orbs[0];
+  for(let i=0;i<dots.length;i++){
+    const da=dots[i];
+    const odx=da.x-mainOrb.x,ody=da.y-mainOrb.y;
+    if(Math.sqrt(odx*odx+ody*ody)>300)continue;
+    for(let j=i+1;j<dots.length;j++){
+      const db=dots[j];
+      const lx=da.x-db.x,ly=da.y-db.y;
+      const dd=Math.sqrt(lx*lx+ly*ly);
+      if(dd<58){
+        ctx.strokeStyle=`rgba(58,191,191,${(1-dd/58)*0.14})`;
+        ctx.lineWidth=0.5;
+        ctx.beginPath();ctx.moveTo(da.x,da.y);ctx.lineTo(db.x,db.y);ctx.stroke();
+      }
+    }
+  }
+
+  // Mouse connection lines — dots near cursor connect to each other
+  if(mouse.x>0&&mouse.x<W){
+    const nearDots=dots.filter(d=>{
+      const dx=d.x-mouse.x,dy=d.y-mouse.y;
+      return Math.sqrt(dx*dx+dy*dy)<100;
+    });
+    for(let i=0;i<nearDots.length;i++){
+      for(let j=i+1;j<nearDots.length;j++){
+        const lx=nearDots[i].x-nearDots[j].x,ly=nearDots[i].y-nearDots[j].y;
+        const dd=Math.sqrt(lx*lx+ly*ly);
+        if(dd<80){
+          ctx.strokeStyle=`rgba(58,191,191,${(1-dd/80)*0.22})`;
+          ctx.lineWidth=0.5;
+          ctx.beginPath();ctx.moveTo(nearDots[i].x,nearDots[i].y);ctx.lineTo(nearDots[j].x,nearDots[j].y);ctx.stroke();
+        }
+      }
+    }
+  }
+
+  // Particles
+  for(let p of particles){
+    p.x+=p.vx;p.y+=p.vy;p.pulse+=0.02;
+    if(p.x<0)p.x=W;if(p.x>W)p.x=0;
+    if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+    const a=p.alpha*(0.65+Math.sin(p.pulse)*0.35);
+    ctx.fillStyle=p.cyan?`rgba(58,191,191,${a*1.3})`:`rgba(168,180,192,${a*0.6})`;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();
+  }
+
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener('mousemove',e=>{
+  const r=document.getElementById('hero').getBoundingClientRect();
+  mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;
+});
+window.addEventListener('mouseleave',()=>{mouse.x=-999;mouse.y=-999;});
+window.addEventListener('resize',resize);
+resize();initParticles();draw();
+
+// ── Edu Scrollytelling ──
+(function(){
+  const section   = document.getElementById('edu-scroll');
+  const wordLeft  = document.getElementById('edu-word-left');
+  const wordRight = document.getElementById('edu-word-right');
+  const imgWrap   = document.getElementById('edu-screenshot-wrap');
+
+  function lerp(a, b, t){ return a + (b - a) * t; }
+  function clamp(v, lo, hi){ return Math.min(Math.max(v, lo), hi); }
+  function easeOut(t){ return 1 - Math.pow(1 - t, 3); }
+  function easeIn(t){ return t * t * t; }
+
+  function onScroll(){
+    if(!section) return;
+    const rect   = section.getBoundingClientRect();
+    const total  = section.offsetHeight - window.innerHeight;
+    const scrolled = clamp(-rect.top, 0, total);
+    const p = scrolled / total;
+
+    const splitP  = clamp(p / 0.35, 0, 1);
+    const splitE  = easeOut(splitP);
+    const fadeP   = clamp((p - 0.55) / 0.25, 0, 1);
+    const vw = window.innerWidth;
+    const leftX  = lerp(0, -vw * 0.38, splitE);
+    const rightX = lerp(0,  vw * 0.38, splitE);
+    const wordOpacity = 1 - easeIn(fadeP);
+
+    wordLeft.style.transform  = `translateX(${leftX}px)`;
+    wordRight.style.transform = `translateX(${rightX}px)`;
+    wordLeft.style.opacity    = wordOpacity;
+    wordRight.style.opacity   = wordOpacity;
+
+    const imgFadeIn = clamp(p / 0.3, 0, 1);
+    const scaleP    = clamp((p - 0.2) / 0.8, 0, 1);
+    const scale     = lerp(0.45, 1.18, easeOut(scaleP));
+
+    imgWrap.style.opacity   = easeOut(imgFadeIn);
+    imgWrap.style.transform = `translate(-50%, -50%) scale(${scale})`;
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// ── GCC Decode Scrollytelling ──
+(function(){
+
+  const section = document.getElementById('gcc-scroll');
+
+  const left  = document.getElementById('gcc-left');
+  const right = document.getElementById('gcc-right');
+
+  const shot = document.getElementById('gcc-shot');
+
+  function clamp(v, min, max){
+    return Math.min(Math.max(v, min), max);
+  }
+
+  function lerp(a, b, t){
+    return a + (b - a) * t;
+  }
+
+  function easeOut(t){
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function easeIn(t){
+    return t * t * t;
+  }
+
+  function update(){
+
+    const rect = section.getBoundingClientRect();
+
+    const total =
+      section.offsetHeight - window.innerHeight;
+
+    const scrolled =
+      clamp(-rect.top, 0, total);
+
+    const p = scrolled / total;
+
+    /* TITLE SPLIT */
+    const splitP = clamp(p / 0.35, 0, 1);
+
+    const splitE = easeOut(splitP);
+
+    const vw = window.innerWidth;
+
+    const leftX =
+      lerp(0, -vw * 0.42, splitE);
+
+    const rightX =
+      lerp(0, vw * 0.42, splitE);
+
+    left.style.transform =
+      `translateX(${leftX}px)`;
+
+    right.style.transform =
+      `translateX(${rightX}px)`;
+
+    /* TITLE FADE */
+    const fadeP =
+      clamp((p - 0.4) / 0.25, 0, 1);
+
+    const opacity =
+      1 - easeIn(fadeP);
+
+    left.style.opacity = opacity;
+    right.style.opacity = opacity;
+
+    /* SCREENSHOT */
+    const imgFade =
+      clamp(p / 0.22, 0, 1);
+
+    const scaleP =
+      clamp((p - 0.1) / 0.75, 0, 1);
+
+    const scale =
+      lerp(0.45, 1.12, easeOut(scaleP));
+
+    shot.style.opacity =
+      easeOut(imgFade);
+
+    shot.style.transform =
+      `translate(-50%, -50%) scale(${scale})`;
+  }
+
+  window.addEventListener(
+    'scroll',
+    update,
+    { passive:true }
+  );
+
+  update();
+
+})();
+
+</script>
 </body>
 </html>
