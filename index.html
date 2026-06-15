@@ -664,6 +664,55 @@ footer{background:#0A0C10;padding:36px 64px;border-top:0.5px solid rgba(255,255,
 
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 @keyframes scanLine{0%{left:-100%;}100%{left:100%;}}
+
+
+/* ===== Responsive additions ===== */
+@media (max-width: 1024px){
+  nav{padding:0 32px;}
+  .hero-content,.section-light,.section-dark,.section-darker,.cta-section,footer{
+    padding-left:32px;padding-right:32px;
+  }
+  .pillars,.vert-grid,.about-top{grid-template-columns:1fr;}
+  .about-top{gap:48px;}
+}
+
+@media (max-width:768px){
+  nav{padding:0 20px;height:60px;}
+  .nav-links{display:none;}
+  .hero-content{padding:100px 20px 80px;}
+  .section-light,.section-dark,.section-darker,.cta-section{padding:80px 20px;}
+  .scroll-hint{left:20px;}
+  .trust-bar{flex-direction:column;gap:24px;}
+  .trust-item{
+    border-right:none;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    margin-right:0;
+    padding-right:0;
+    padding-bottom:20px;
+  }
+  .trust-item:last-child{border-bottom:none;}
+  .footer-top,.footer-bottom{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+  }
+  .edu-scroll-section,.gcc-scroll-section{height:180vh;}
+  .edu-screenshot-wrap{width:92vw;}
+  .gcc-shot-wrap{width:94vw;}
+  .founder-card{
+    min-width:280px;
+    max-width:280px;
+  }
+  .hero-ctas,.cta-btns{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .hero-ctas a,.cta-btns a{
+    width:100%;
+    justify-content:center;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -895,7 +944,7 @@ footer{background:#0A0C10;padding:36px 64px;border-top:0.5px solid rgba(255,255,
 
             <img
               src="academai-shot.jpg"
-              alt="EDUG8 Website"
+              alt="AcademAI Website"
               class="edu-real-image"
             >
 
@@ -971,15 +1020,10 @@ footer{background:#0A0C10;padding:36px 64px;border-top:0.5px solid rgba(255,255,
   <p class="cta-sub reveal d1">
     We're looking for investors and partners who think long-term, move with purpose, and care about building things that actually work.
   </p>
-
-  <!-- TALLY FORM -->
-  <div class="reveal d2" style="margin-top:40px; max-width:700px; margin-left:auto; margin-right:auto;">
-
-    <iframe data-tally-src="https://tally.so/embed/rjvvWo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="752" frameborder="0" marginheight="0" marginwidth="0" title="Get in Touch"></iframe>
-<script>
-  var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
-</script>
- 
+  <div class="cta-btns reveal d2">
+    <a href="mailto:info@shofaar.com" class="btn-primary">Get in touch <span>→</span></a>
+    <a href="#education" class="btn-terra">Explore our products <span>→</span></a>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -1000,8 +1044,8 @@ footer{background:#0A0C10;padding:36px 64px;border-top:0.5px solid rgba(255,255,
     <div class="footer-links">
       <a href="#">Privacy</a>
       <a href="#">Legal</a>
-      <a href="https://www.linkedin.com/company/modshofr/">LinkedIn</a>
-      <a href="https://www.instagram.com/shofaar_/">Instagram</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
     </div>
   </div>
 </footer>
